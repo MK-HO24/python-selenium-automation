@@ -1,3 +1,5 @@
+from itertools import product
+
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
@@ -7,11 +9,11 @@ def open_target_main(context):
     context.driver.get('https://target.com/')
 
 
-@when('Search for a product')
-def search_for_product(context):
-    context.driver.find_element(By.ID, 'search').send_keys('tea')
+@when('Search for {product}')
+def search_for_product(context, product):
+    context.driver.find_element(By.ID, 'search').send_keys(product)
     context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
-    sleep(6)
+    sleep(15)
 
 
 @when('Click on cart icon')
@@ -30,10 +32,10 @@ def click_sign_in_right(context):
     context.driver.find_element(By.XPATH, "//a[@data-test='accountNav-signIn']//span[text()='Sign in']").click()
     sleep(4)
 
-@then('Verify that correct result shown')
-def verify_search_result(context):
+@then('Verify that correct result show {product}')
+def verify_search_result(context, product):
     actual_result = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
-    expected_result = 'tea'
+    expected_result = product
     assert expected_result in actual_result, f'Expected {expected_result}, got actual {actual_result}'
 
 

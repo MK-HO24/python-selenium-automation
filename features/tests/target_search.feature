@@ -1,20 +1,24 @@
 # Created by bbkam at 9/13/2024
 Feature: Test for target search functionality
 
-  Scenario: User can search for a product
+  Scenario: User can search for coffee
     Given Open target main page
-    When Search for a product
-    Then Verify that correct result shown
+    When Search for coffee
+    Then Verify that correct result show coffee
 
-
-  Scenario: User can verify empty cart
+  Scenario: User can search for tea
     Given Open target main page
-    When Click on cart icon
-    Then Verify cart is empty
+    When Search for tea
+    Then Verify that correct result show tea
 
-
-  Scenario:  user can navigate to Sign In
+  Scenario Outline: User can search for product
     Given Open target main page
-    When Click on Sign in icon
-    When Click Sign in Right Nav Menu
-    Then Verify Sign In form opened
+    When Search for <product>
+    Then Verify that correct result show <expected_product>
+    Examples:
+    |product   |expected_product|
+    |coffee    |coffee          |
+    |tea       |tea             |
+    |mug       |mug             |
+
+
