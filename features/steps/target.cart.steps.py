@@ -19,9 +19,10 @@ def open_target_cart(context):
 
 @then('Verify cart is empty')
 def verify_cart_empty(context):
-    actual_text = context.driver.find_element(By.XPATH, "//div[@data-test='boxEmptyMsg']//h1[text()='Your cart is empty']").text
-    expected_text = 'Your cart is empty'
-    assert expected_text in actual_text, f'Expected {expected_text}, got actual {actual_text}'
+    context.app.cart_page.empty_cart_check()
+    # actual_text = context.driver.find_element(By.XPATH, "//div[@data-test='boxEmptyMsg']//h1[text()='Your cart is empty']").text
+    # expected_text = 'Your cart is empty'
+    # assert expected_text in actual_text, f'Expected {expected_text}, got actual {actual_text}'
 
 
 @then('Verify cart is not empty')
@@ -34,6 +35,7 @@ def verify_cart_is_empty(context):
 
 @then('Verify that correct result show {product}')
 def verify_search_result(context, product):
-    actual_result = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
-    expected_result = product
-    assert expected_result in actual_result, f'Expected {expected_result}, got actual {actual_result}'
+    context.app.search_result_page.verify_search_result(product)
+    # actual_result = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
+    # expected_result = product
+    # assert expected_result in actual_result, f'Expected {expected_result}, got actual {actual_result}'
