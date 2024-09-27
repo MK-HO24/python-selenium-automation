@@ -29,7 +29,11 @@ def click_cart_icon(context):
 
 @when('Click on Sign in icon')
 def click_sign_in(context):
-    context.driver.find_element(By.XPATH,"//a[@data-test='@web/AccountLink']//span[text()='Sign in']").click()
+    context.app.main_page.signin_icon()
+
+
+
+    # context.driver.find_element(By.XPATH,"//a[@data-test='@web/AccountLink']//span[text()='Sign in']").click()
 
 
 

@@ -6,9 +6,11 @@ from time import sleep
 
 @when('Add first search result to cart')
 def add_first_search_result(context):
-    context.driver.find_element(By.CSS_SELECTOR,"[data-test='chooseOptionsButton']").click()
+    context.app.cart_page.add_first_search_result()
+
+    # context.driver.find_element(By.CSS_SELECTOR,"[data-test='chooseOptionsButton']").click()
     # sleep(5)
-    context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,"div[class*='sc-529a2ea7-0 hbiLND']"))).click()
+    # context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,"div[class*='sc-529a2ea7-0 hbiLND']"))).click()
 
     # context.driver.find_element(By.CSS_SELECTOR,"div[class*='sc-529a2ea7-0 hbiLND']").click()
 
@@ -26,11 +28,15 @@ def verify_cart_empty(context):
 
 
 @then('Verify cart is not empty')
-def verify_cart_is_empty(context):
+def verify_cart_is_not_empty(context):
+    context.app.cart_page.verify_cart_is_not_empty()
+
+
+
     # context.driver.find_element(By.XPATH,"//a[text()='View cart & check out']").click()
-    actual_text = context.driver.find_element(By.XPATH,"//span[contains(@class,'sc-93ec7147-3 fUVkzh')]").text
-    expected_text = '1 item'
-    assert expected_text in actual_text, f'Expected {expected_text}, got actual {actual_text}'
+    # actual_text = context.driver.find_element(By.XPATH,"//span[contains(@class,'sc-93ec7147-3 fUVkzh')]").text
+    # expected_text = '1 item'
+    # assert expected_text in actual_text, f'Expected {expected_text}, got actual {actual_text}'
 
 
 @then('Verify that correct result show {product}')
@@ -39,3 +45,8 @@ def verify_search_result(context, product):
     # actual_result = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
     # expected_result = product
     # assert expected_result in actual_result, f'Expected {expected_result}, got actual {actual_result}'
+
+
+@then('Verify that product {product} in URL')
+def verify_product_url(context, product):
+    context.app.search_result_page.verify_product_in_url(product)

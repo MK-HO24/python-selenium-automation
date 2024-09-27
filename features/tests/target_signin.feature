@@ -5,3 +5,14 @@ Feature: Test for target signin feature
     When Click on Sign in icon
     When Click Sign in Right Nav Menu
     Then Verify Sign In form opened
+
+
+    Scenario:  user can Sign In to account
+    Given Open target main page
+    When Click on Sign in icon
+    When Click Sign in Right Nav Menu
+    Then Verify Sign In form opened
+    When Input user name
+    When Input password
+    When Click signin button
+    Then Verify user is logged in

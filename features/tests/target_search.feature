@@ -5,11 +5,13 @@ Feature: Test for target search functionality
     Given Open target main page
     When Search for coffee
     Then Verify that correct result show coffee
+    Then Verify that product coffee in URL
 
   Scenario: User can search for tea
     Given Open target main page
     When Search for tea
     Then Verify that correct result show tea
+    Then Verify that product tea in URL
 
   Scenario Outline: User can search for product
     Given Open target main page
