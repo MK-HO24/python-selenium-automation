@@ -17,5 +17,5 @@ class SearchResultPage(Page):
         # assert product in actual_result, f'Expected {product}, got actual {actual_result}'
 
     def verify_product_in_url(self, product):
-        self.verify_product_partial_url(product)
+        self.verify_partial_url(product)
         # self.verify_partial_text(product, *self.SEARCH_RESULT_HEADER)
