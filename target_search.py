@@ -22,7 +22,7 @@ sleep(6)  # wait for search results page to load
 
 # Verification
 actual_result = driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
-expected_result = 'tea1'
+expected_result = 'tea'
 
 assert expected_result in actual_result, f'Expected {expected_result}, got actual {actual_result}'
 print('Test case passed')

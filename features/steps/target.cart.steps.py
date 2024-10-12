@@ -38,15 +38,3 @@ def verify_cart_is_not_empty(context):
     # expected_text = '1 item'
     # assert expected_text in actual_text, f'Expected {expected_text}, got actual {actual_text}'
 
-
-@then('Verify that correct result show {product}')
-def verify_search_result(context, product):
-    context.app.search_result_page.verify_search_result(product)
-    # actual_result = context.driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
-    # expected_result = product
-    # assert expected_result in actual_result, f'Expected {expected_result}, got actual {actual_result}'
-
-
-@then('Verify that product {product} in URL')
-def verify_product_url(context, product):
-    context.app.search_result_page.verify_product_in_url(product)

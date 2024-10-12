@@ -8,6 +8,7 @@ from pages.base_page import Page
 class SigninPage(Page):
     ACCOUNT_NAV_SIGNIN = (By.XPATH, "//a[@data-test='accountNav-signIn']//span[text()='Sign in']")
     SIGNIN_PAGE_HEADER = (By.XPATH,"//span[text()='Sign into your Target account']")
+    SIGNIN_MSG_HEADER = (By.XPATH,("//div[@data-test='authAlertDisplay']"))
     USERNAME_FIELD = (By.ID,"username")
     PASSWORD_FIELD = (By.ID,"password")
     SIGNIN_BTN = (By.ID, "login")
@@ -26,9 +27,14 @@ class SigninPage(Page):
 
 
     def input_password(self):
-        self.input_text("F*******",*self.PASSWORD_FIELD)
+        self.input_text("Password2211",*self.PASSWORD_FIELD)
+
+    def input_wrong_user_name(self):
+        self.input_text("madeup@gmail.com",*self.USERNAME_FIELD)
 
 
+    def input_wrong_password(self):
+        self.input_text("FakePass2001",*self.PASSWORD_FIELD)
 
 
     def click_signin_button(self):
@@ -36,3 +42,7 @@ class SigninPage(Page):
 
     def verify_user_is_logged_in(self):
         self.wait_for_element_to_disappear(*self.SIGNIN_BTN)
+
+
+    def verify_error_message(self):
+        self.verify_text("We can't find your account.", *self.SIGNIN_MSG_HEADER)

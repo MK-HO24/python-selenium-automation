@@ -1,4 +1,3 @@
-# Created by bbkam at 9/13/2024
 Feature: Test for target search functionality
 
   Scenario: User can search for coffee
@@ -22,6 +21,16 @@ Feature: Test for target search functionality
     |coffee    |coffee          |
     |tea       |tea             |
     |mug       |mug             |
+
+
+  Scenario: User can see favorite tool tip for search result
+    Given Open target main page
+    When Search for umbrella
+    And Hover favorite icon
+    Then favorite tool tip is shown
+
+
+
 
 
 

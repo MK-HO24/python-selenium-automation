@@ -1,5 +1,5 @@
 # Created by bbkam at 10/3/2024
-Feature: Tese for target signin page
+Feature: Test for target signin page
 
   Scenario: User can opne and close Terms and Conditions from sign in page
    Given Open sign in page
